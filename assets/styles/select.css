@@ -1,0 +1,203 @@
+
+
+body {
+  background-color: #565372;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.logo {
+  position: absolute;
+  top: 30px;
+  left: 50px;
+  font-size: 40px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 1px;
+}
+
+.login-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #3c3951;
+  padding: 40px 40px;
+  border-radius: 6px;
+  border: 1px solid white;
+  text-align: center;
+  color: white;
+  min-width: 450px;
+}
+
+.login-box h1 {
+  font-size: 45px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.login-box p {
+  font-size: 0.85rem;
+  color: #b0aecd;
+  margin-bottom: 50px;
+}
+.nav {
+  position: absolute;
+  top: 40px;
+  left: 120px;
+  font-size: 40px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 1px;
+}
+.hero-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #3c3951;
+  padding: 40px 40px;
+  border-radius: 6px;
+  border: 1px solid #7E7C7C;
+  text-align: center;
+  color: white;
+  min-width: 450px;
+}
+
+.hero-box h1 {
+  font-size: 45px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.hero-box p {
+  font-size: 0.85rem;
+  color: #b0aecd;
+  margin-bottom: 50px;
+}
+.btn {
+  display: block;
+  width: 100%;
+  padding: 10px 100px;
+  margin: 25px 0;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn a{
+  color: inherit;
+  text-decoration: none;
+}
+
+.btn.student {
+  background-color: #726F91;
+  color: white;
+  text-decoration: none;
+  color: inherit;
+}
+
+.btn.student:hover {
+  background-color: #8581a6;
+}
+
+.btn.admin {
+  background-color: #A7B7F5;
+  color: #1c1c1c;
+}
+
+.btn.admin:hover {
+  background-color: #a2a4ff;
+}
+
+@media (max-width: 768px) {
+  .btn {
+    padding: 10px 60px;
+  }
+}
+
+@media (max-width: 640px) {
+  .btn {
+    padding: 8px 40px;
+    font-size: 0.9rem;
+    margin: 15px 0;
+  }
+}
+
+
+@media (max-width: 1024px) {
+  .hero-box {
+    min-width: 380px;
+    padding: 30px;
+  }
+  .hero-box h1 {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-box {
+    min-width: 320px;
+    padding: 25px;
+  }
+  .hero-box h1 {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-box {
+    min-width: 280px;
+    padding: 20px;
+  }
+  .hero-box h1 {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .nav {
+    left: 80px;
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav {
+    top: 30px;
+    left: 80px;
+    transform: translateX(-50%);
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav {
+    top: 30px;
+    left: 80px;
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 1024px) {
+  body {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+    align-items: center;
+  }
+}

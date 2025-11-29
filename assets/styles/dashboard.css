@@ -1,0 +1,144 @@
+/* --------------------------------------------------
+    GENERAL
+-------------------------------------------------- */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #2e2b4f;
+    margin: 0;
+    padding: 0;
+}
+
+/* --------------------------------------------------
+    NAVBAR
+-------------------------------------------------- */
+.dashboard-nav {
+    background: #4c4380;
+    padding: 15px 20px;
+}
+
+.btn-logout {
+    background: #e74c3c;
+    color: white;
+    font-weight: 600;
+}
+
+/* --------------------------------------------------
+    MAIN CONTAINER
+-------------------------------------------------- */
+.dashboard-container {
+    padding: 25px;
+}
+
+.attendance-card {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 25px;
+    max-width: 950px;
+}
+
+/* --------------------------------------------------
+    GRID FILTER + ACTION PANEL
+-------------------------------------------------- */
+.dashboard-controls {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 25px;
+    grid-row-gap: 18px;
+    margin-bottom: 25px;
+}
+
+/* Box style (Date, Section, Refresh, Buttons) */
+.control-box {
+    background: #5b538d;
+    color: white;
+    padding: 18px 22px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-align: left;
+    font-size: 15px;
+}
+
+.control-box select,
+.control-box input[type="date"] {
+    width: 100%;
+    margin-top: 8px;
+    padding: 8px;
+    border-radius: 6px;
+    border: none;
+}
+
+/* Buttons (Add/Edit/Delete/Refresh) */
+.btn-crud {
+    width: 100%;
+    padding: 15px;
+    border-radius: 8px;
+    border: none;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Purple buttons */
+.btn-primary-crud {
+    background: #5b538d;
+    color: white;
+}
+.btn-primary-crud:hover {
+    background: #514b82;
+}
+
+/* Light lavender (Refresh & Delete button style) */
+.btn-light-crud {
+    background: #a79ae8;
+    color: #1a1a1a;
+}
+.btn-light-crud:hover {
+    background: #9b8fe3;
+}
+
+/* --------------------------------------------------
+    TABLE STYLING
+-------------------------------------------------- */
+.table thead th {
+    color: #6d6d6d;
+    font-weight: 700;
+    border-bottom: 2px solid #e1e1e1;
+    padding-bottom: 10px;
+}
+
+.table tbody tr {
+    border-bottom: 1px solid #eee;
+}
+
+.table tbody tr td {
+    padding: 14px 10px;
+}
+
+/* Present/Absent indicator colors */
+.text-success {
+    font-weight: 700;
+}
+
+.text-danger {
+    font-weight: 700;
+}
+
+/* --------------------------------------------------
+    MODAL
+-------------------------------------------------- */
+.modal-content {
+    border-radius: 12px;
+}
+
+.modal-title {
+    color: #4b3fa3;
+}
+
+/* --------------------------------------------------
+    RESPONSIVE DESIGN
+-------------------------------------------------- */
+@media (max-width: 768px) {
+    .dashboard-controls {
+        grid-template-columns: 1fr;
+    }
+}

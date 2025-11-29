@@ -1,0 +1,19 @@
+@import 'dashboard.css';
+@import 'admin-login.css';
+@import 'select.css';
+@import 'student.css';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #565372;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
