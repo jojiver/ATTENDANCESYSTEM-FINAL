@@ -7,9 +7,7 @@ if (!isset($_SESSION['admin_username'])) {
     exit;
 }
 
-/* ===============================
-   HANDLE ADD STUDENT
-================================ */
+
 if (isset($_POST['add_student'])) {
     $student_id = $_POST['student_id'];
     $fullname = $_POST['fullname'];
@@ -23,9 +21,7 @@ if (isset($_POST['add_student'])) {
     exit;
 }
 
-/* ===============================
-   HANDLE EDIT STUDENT
-================================ */
+
 if (isset($_POST['edit_student'])) {
     $student_id = $_POST['student_id'];
     $fullname = $_POST['fullname'];
@@ -39,9 +35,7 @@ if (isset($_POST['edit_student'])) {
     exit;
 }
 
-/* ===============================
-   HANDLE DELETE STUDENT
-================================ */
+
 if (isset($_POST['delete_student'])) {
     $student_id = $_POST['student_id'];
 
@@ -53,15 +47,11 @@ if (isset($_POST['delete_student'])) {
     exit;
 }
 
-/* ===============================
-   FILTER LOGIC
-================================= */
+
 $selected_section = isset($_GET['section']) ? $_GET['section'] : '';
 $selected_date = isset($_GET['date']) && $_GET['date'] !== '' ? $_GET['date'] : date('Y-m-d');
 
-/* ===============================
-   ATTENDANCE RETRIEVAL
-================================= */
+
 
 if (!empty($selected_section)) {
     $stmt = $conn->prepare("
@@ -103,7 +93,7 @@ $students = $stmt->get_result();
 
 <body>
 
-<!-- NAVBAR -->
+
 <nav class="navbar navbar-expand-lg dashboard-nav">
   <div class="container-fluid d-flex justify-content-between align-items-center px-4">
     <a class="navbar-brand fw-bold text-white fs-3">AMS</a>
@@ -115,7 +105,7 @@ $students = $stmt->get_result();
   </div>
 </nav>
 
-<!-- MAIN -->
+
 <main class="dashboard-container">
   <div class="container">
 
@@ -123,7 +113,7 @@ $students = $stmt->get_result();
 
     <div class="attendance-card mx-auto p-4">
 
-      <!-- 2x2 GRID BUTTONS -->
+      
       <div class="row mb-4">
         <div class="col-md-6 mb-2">
           <button class="btn w-100 btn-student" data-bs-toggle="modal" data-bs-target="#addStudentModal">
@@ -144,7 +134,7 @@ $students = $stmt->get_result();
         </div>
       </div>
 
-      <!-- FILTERS -->
+   
       <form method="GET" action="" class="filters mb-3">
         <div class="mb-2">
           <label class="form-label fw-semibold text-white">Select Date</label>
@@ -158,6 +148,7 @@ $students = $stmt->get_result();
             <option value="A" <?= $selected_section=='A'?'selected':'' ?>>A</option>
             <option value="B" <?= $selected_section=='B'?'selected':'' ?>>B</option>
             <option value="C" <?= $selected_section=='C'?'selected':'' ?>>C</option>
+             <option value="C" <?= $selected_section=='D'?'selected':'' ?>>D</option>
           </select>
         </div>
 
@@ -196,9 +187,7 @@ $students = $stmt->get_result();
   </div>
 </main>
 
-<!-- ======================================
-     ADD STUDENT MODAL
-========================================== -->
+
 <div class="modal fade" id="addStudentModal">
   <div class="modal-dialog">
     <form method="POST" class="modal-content p-4">
@@ -217,6 +206,7 @@ $students = $stmt->get_result();
         <option value="A">A</option>
         <option value="B">B</option>
         <option value="C">C</option>
+        <option value="D">D</option>
       </select>
 
       <button class="btn btn-student w-100">Add Student</button>
@@ -224,9 +214,7 @@ $students = $stmt->get_result();
   </div>
 </div>
 
-<!-- ======================================
-     EDIT STUDENT MODAL
-========================================== -->
+
 <div class="modal fade" id="editStudentModal">
   <div class="modal-dialog">
     <form method="POST" class="modal-content p-4">
@@ -246,6 +234,7 @@ $students = $stmt->get_result();
         <option value="A">A</option>
         <option value="B">B</option>
         <option value="C">C</option>
+         <option value="D">C</option>
       </select>
 
       <button class="btn btn-student w-100">Update</button>
@@ -253,9 +242,7 @@ $students = $stmt->get_result();
   </div>
 </div>
 
-<!-- ======================================
-     DELETE STUDENT MODAL
-========================================== -->
+
 <div class="modal fade" id="deleteStudentModal">
   <div class="modal-dialog">
     <form method="POST" class="modal-content p-4">

@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <a href="student.php" class="btn reset">Reset</a>
       </form>
 
-      <!-- Message Area -->
+ 
       <?php if (!empty($message)): ?>
         <div class="message-box">
           <p><?= htmlspecialchars($message) ?></p>

@@ -24,7 +24,7 @@ $date     = date("F d, Y");
     <div class="attendance-box">
       <h2>Attendance Marked Successfully</h2>
       <p>
-        ✅ Thank you, <strong><?= htmlspecialchars($fullname) ?></strong><br>
+        <strong><?= htmlspecialchars($fullname) ?></strong><br>
         Section: <strong><?= htmlspecialchars($section) ?></strong><br>
         Date: <strong><?= htmlspecialchars($date) ?></strong><br><br>
         Your attendance has been recorded successfully.

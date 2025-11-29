@@ -1,7 +1,7 @@
 <?php
-// pages/student.php
+
 session_start();
-include("../config.php"); // make sure this path is correct
+include("../config.php"); 
 
 $message = "";
 $messageClass = "";
@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $message = "❌ Please enter a Student ID.";
         $messageClass = "error";
     } else {
-        // Check if student exists in new table (fullname + section)
+        
         $stmt = $conn->prepare("SELECT fullname, section FROM students WHERE student_id = ? LIMIT 1");
         if ($stmt === false) {
             die("Prepare failed (students select): " . htmlspecialchars($conn->error));
@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $stmt->fetch();
             $stmt->close();
 
-            // Check if already marked today
+            
             $chk = $conn->prepare("SELECT id FROM attendance WHERE student_id = ? AND date = ?");
             if ($chk === false) {
                 die("Prepare failed (attendance check): " . htmlspecialchars($conn->error));
@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             } else {
                 $chk->close();
 
-                // Insert record in attendance table
+              
                 $ins = $conn->prepare("
                     INSERT INTO attendance (student_id, fullname, section, status, date, time_in)
                     VALUES (?, ?, ?, 'Present', ?, NOW())
@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 }
                 $ins->close();
 
-                // Save to session for success page
+                
                 $_SESSION['student_id'] = $student_id;
                 $_SESSION['fullname'] = $fullname;
                 $_SESSION['section'] = $section;
@@ -71,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             }
         } else {
             // Student not found
-            $message = "❌ Invalid Student ID. Please try again.";
+            $message = "Invalid Student ID. Please try again.";
             $messageClass = "error";
             $stmt->close();
         }
@@ -103,7 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       <form method="POST" action="student.php">
         <label for="student_id" class="label">Student ID</label>
         <div class="input-group">
-          <input type="text" id="student_id" name="student_id" placeholder="e.g. A001" required 
+          <input type="text" id="student_id" name="student_id" placeholder="e.g. 2024092" required 
             value="<?= isset($_POST['student_id']) ? htmlspecialchars($_POST['student_id']) : '' ?>" />
         </div>
 

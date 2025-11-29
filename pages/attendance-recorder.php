@@ -4,7 +4,7 @@ include("../config.php");
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $student_id = trim($_POST['student_id']);
 
-    // Get student info
+  
     $sql = "SELECT * FROM students WHERE student_id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $student_id);
@@ -16,14 +16,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $fullname = $student['fullname'];
         $section = $student['section'];
 
-        // Check if already marked today
         $check = $conn->prepare("SELECT * FROM attendance WHERE student_id = ? AND date = CURDATE()");
         $check->bind_param("s", $student_id);
         $check->execute();
         $checkResult = $check->get_result();
 
         if ($checkResult->num_rows == 0) {
-            // Record attendance as Present
+           
             $insert = $conn->prepare("INSERT INTO attendance (student_id, fullname, section, status, date, time_in) VALUES (?, ?, ?, 'Present', CURDATE(), NOW())");
             $insert->bind_param("sss", $student_id, $fullname, $section);
             $insert->execute();

@@ -195,7 +195,7 @@ input[type="date"] {
                         <?php endif; ?>
                     </div>
 
-                    <!-- Absent List -->
+                    
                     <div class="col-md-6">
                         <h5 class="absent">Absent</h5>
                         <?php if (count($absent_list) > 0): ?>
