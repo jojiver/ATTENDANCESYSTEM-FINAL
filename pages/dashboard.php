@@ -118,6 +118,7 @@ $students = $stmt->get_result();
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/styles/dashboard.css" />
+  
 </head>
 
 <body>
@@ -138,7 +139,7 @@ $students = $stmt->get_result();
 <main class="dashboard-container">
   <div class="container">
 
-    <h2 class="text-center text-white fw-bold mb-4 text-uppercase">Attendance Record</h2>
+    <h2 class="text-center text-white fw-bold mb-4 text-uppercase" style="color: black !important;">Attendance Record</h2>
 
     <div class="attendance-card mx-auto p-4">
 
@@ -263,7 +264,7 @@ $students = $stmt->get_result();
         <option value="A">A</option>
         <option value="B">B</option>
         <option value="C">C</option>
-         <option value="D">C</option>
+         <option value="D">D</option>
       </select>
 
       <button class="btn btn-student w-100">Update</button>
