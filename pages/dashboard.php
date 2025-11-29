@@ -6,8 +6,6 @@ if (!isset($_SESSION['admin_username'])) {
     header("Location: admin-login.php");
     exit;
 }
-
-
 if (isset($_POST['add_student'])) {
     $student_id = $_POST['student_id'];
     $fullname = $_POST['fullname'];
@@ -22,11 +20,53 @@ if (isset($_POST['add_student'])) {
 }
 
 
+if (isset($_POST['delete_student'])) {
+    $student_id = $_POST['student_id'];
+
+    // Check if student exists
+    $check = $conn->prepare("SELECT * FROM students WHERE student_id=?");
+    $check->bind_param("s", $student_id);
+    $check->execute();
+    $result = $check->get_result();
+
+    if ($result->num_rows == 0) {
+        echo "<script>alert('Student does not exist.'); window.location='dashboard.php';</script>";
+        exit;
+    }
+
+    // DELETE attendance first (prevents foreign key error 1451)
+    $del_attendance = $conn->prepare("DELETE FROM attendance WHERE student_id=?");
+    $del_attendance->bind_param("s", $student_id);
+    $del_attendance->execute();
+
+    // DELETE student
+    $stmt = $conn->prepare("DELETE FROM students WHERE student_id=?");
+    $stmt->bind_param("s", $student_id);
+    $stmt->execute();
+
+    echo "<script>alert('Student Deleted Successfully!'); window.location='dashboard.php';</script>";
+    exit;
+}
+
+
+/* EDIT STUDENT */
 if (isset($_POST['edit_student'])) {
     $student_id = $_POST['student_id'];
     $fullname = $_POST['fullname'];
     $section = $_POST['section'];
 
+    // Check if student exists
+    $check = $conn->prepare("SELECT * FROM students WHERE student_id=?");
+    $check->bind_param("s", $student_id);
+    $check->execute();
+    $result = $check->get_result();
+
+    if ($result->num_rows == 0) {
+        echo "<script>alert('Student does not exist.'); window.location='dashboard.php';</script>";
+        exit;
+    }
+
+    // Update student
     $stmt = $conn->prepare("UPDATE students SET fullname=?, section=? WHERE student_id=?");
     $stmt->bind_param("sss", $fullname, $section, $student_id);
     $stmt->execute();
@@ -35,17 +75,6 @@ if (isset($_POST['edit_student'])) {
     exit;
 }
 
-
-if (isset($_POST['delete_student'])) {
-    $student_id = $_POST['student_id'];
-
-    $stmt = $conn->prepare("DELETE FROM students WHERE student_id=?");
-    $stmt->bind_param("s", $student_id);
-    $stmt->execute();
-
-    echo "<script>alert('Student Deleted Successfully!'); window.location='dashboard.php';</script>";
-    exit;
-}
 
 
 $selected_section = isset($_GET['section']) ? $_GET['section'] : '';
@@ -148,7 +177,7 @@ $students = $stmt->get_result();
             <option value="A" <?= $selected_section=='A'?'selected':'' ?>>A</option>
             <option value="B" <?= $selected_section=='B'?'selected':'' ?>>B</option>
             <option value="C" <?= $selected_section=='C'?'selected':'' ?>>C</option>
-             <option value="C" <?= $selected_section=='D'?'selected':'' ?>>D</option>
+             <option value="D" <?= $selected_section=='D'?'selected':'' ?>>D</option>
           </select>
         </div>
 
